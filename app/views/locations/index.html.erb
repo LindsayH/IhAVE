@@ -1,2 +1,16 @@
 <h1>Locations#index</h1>
 <p>Find me in app/views/locations/index.html.erb</p>
+
+
+<p>Hi user: <%= @user.id %></p>
+<div>
+	
+		<%= link_to 'New Location', new_location_path, class: 'btn btn-lrg' %>
+	
+</div>
+
+<% @locations.each do |location| %>
+	<p>location id: <%= location.id %></p>
+	<p>Name: <%= location.name %> <%= link_to 'Edit', edit_location_path(location) %> <%= link_to 'Delete', location_path(location), method: :delete %></p>
+	<p>Description: <%= location.description %></p>
+<% end %>

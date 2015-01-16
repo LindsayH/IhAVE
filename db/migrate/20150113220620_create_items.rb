@@ -6,6 +6,7 @@ class CreateItems < ActiveRecord::Migration
       t.boolean :is_out
       t.date :due_date
       t.references :location, index: true
+      t.references :user, index: true
 
       t.timestamps
     end

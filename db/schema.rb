@@ -22,11 +22,13 @@ ActiveRecord::Schema.define(version: 20150113220620) do
     t.boolean  "is_out"
     t.date     "due_date"
     t.integer  "location_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "items", ["location_id"], name: "index_items_on_location_id", using: :btree
+  add_index "items", ["user_id"], name: "index_items_on_user_id", using: :btree
 
   create_table "locations", force: true do |t|
     t.string   "name"
