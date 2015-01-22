@@ -5,8 +5,7 @@
         <ul class="sidebar-menu" id="nav-accordion">
           <% if current_user %>
         	  <p class="centered"><a href="<%= locations_url %>">
-                <img src="<% unless current_user.provider %><%= current_user.avatar.url %><% else %><%= current_user.image %><% end %>
-                " class="img-circle" width="60"></a>
+                <img src="<%= current_user.avatar.url %>" class="img-circle" width="60"></a>
             </p>
         	  <h5 class="centered">
                 <%= current_user.username %>
