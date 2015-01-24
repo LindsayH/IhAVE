@@ -17,12 +17,16 @@ class ItemsController < ApplicationController
 
 
     def new
+
       @item = @user.items.build
+      @record = @item.records.build
+
     end
 
   def create
       @item = @location.items.build(item_params)
       @item.user_id = @user.id
+
       if @item.save
         flash[:success] = "Item #{@item.name} added."
         redirect_to location_items_path(@location)
@@ -64,6 +68,6 @@ class ItemsController < ApplicationController
     end
 
     def item_params
-      params.require(:item).permit(:name, :description, :is_out, :date_due, :tag_list, :avatar)
+      params.require(:item).permit(:name, :description, :is_out, :date_due, :tag_list, :avatar, records_attributes: [:date_due, :borrower_name])
     end
 end

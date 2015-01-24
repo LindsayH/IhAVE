@@ -7,15 +7,33 @@
 
   <%= f.text_area :description %>
 
-  <%= f.check_box :is_out %>
+  <%= f.check_box :is_out, class: "checkbox" %>
   
-  <% if @item.is_out %> 
-     <%= f.check_box :is_out %>
+  <div class="record-form">
+    <%= f.fields_for :records do |records_form| %>
 
-   <%= f.datetime :due_date %>
-    <%end%>
+      <%= records_form.text_field :borrower_name %>
 
-		<%= f.text_field :tag_list %>
+      <%= records_form.text_field :date_due, class: "date" %>
+    <% end %> 
+  </div>
+
+  <div class="form-group">
+    <!-- <label class="control-label" for="item_tag_list">Tag list</label> -->
+    <%= f.text_field :tag_list, class: "tagit ui-widget ui-widget-content ui-corner-all" %>
+
+    <!-- <input id="myTags" class="tagit ui-widget ui-widget-content ui-corner-all"> -->
+      
+    
+  </div>
+
+<!--   <ul id="myTags">
+    Existing list items will be pre-added to the tags
+    <li>Tag1</li>
+    <li>Tag2</li>
+  </ul> -->
+
+
 
 
   <%= f.submit %>

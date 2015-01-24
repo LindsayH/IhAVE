@@ -16,6 +16,7 @@
 //= require jquery-ui
 //= require jquery.infinite-pages
 //= require turbolinks
+//= require tag-it
 //= require_tree .
 
 
