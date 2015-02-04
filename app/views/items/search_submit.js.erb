@@ -2,7 +2,7 @@
 	alert('results found');
 	console.log("<p>Search results:</br>" +
 		"<%= @results.map { |result| result.name }.join('<br/>') %>");
-	$('.search-results').empty().append("<p>Search results: </p>" + "<%= j render 'search_results' %>"); 
+	$('.search-results').empty().append("<h1>Search results: <%= j params[:q] %></h1><hr>" + "<%= j render 'search_results' %><hr><h1>All Items</h1>"); 
 
 	// $('.search-results').empty().append("<p>Search results: </br>"); 
 	// <% @results.each do |result| %>
@@ -13,5 +13,5 @@
 <% else %>
 
 	alert('nothing to display');
-	$('.search-results').empty().append("<p>Search results:</br> No results found. Try searching again.</p>" );		
+	$('.search-results').empty().append("<h1>No results found. Try searching again.</h1><hr>" );		
 <% end %>

@@ -1,30 +1,10 @@
-<!-- <div>
-	hi, im a fucking partial and should be rendered </br>
-	<ul>
-		<% @results.each_with_index do |item, index| %>
-			<li><%= link_to "#{item.name}", location_item_path(item.location_id, item.id) %></li>
-			<li><%= item.name %></li>
-			<li><%= item.location_id %></li>
-			<li><%= item.id %></li>
-		<% end %>
-	</ul>
-</div> -->
-
-<div class="container-fluid item-block">
+<div class="container-fluid ">
   <div class ="row image-tiles">
-
-    <% @results.each_with_index do |item, index| %>
-      <div class="col-xs-12 col-md-6 col-lg-4 display">
-        <div class = "item-img">
-            <%= image_tag item.avatar.url(:medium) %>
+    <% @results.each do |item| %>
+        <div class="col-xs-12 col-md-4 col-lg-3 display item-block">
+          <%= link_to (image_tag item.avatar.url(:medium), class: "img img-responsive img-center"), location_item_path(@location, item), remote: true %>
+          <p>Tags: <%= raw item.tag_list.map { |t| link_to t, tag_path(t, item_id: item.id, location_id: @location.id) }.join(', ') %><p>
         </div>
-        <p> <strong> Item: <%= link_to "#{item.name}", location_item_path(item.location_id, item.id) %> </strong> </p>
-        <p>Location: <%= link_to "#{item.location.name}", location_items_path(item.location_id) %></p>
-        <p>Description: <%= item.description %></p>
-        <p>Tag list: <%= item.tag_list %></p>
-        <p class="text-center"><%= link_to "Delete", location_item_path(item.location_id, item.id), method: :delete, class: "btn btn-danger btn-s" %></p>
-		  </div>
-		<%end%>
-
-	</div>
+    <%end%>
+  </div>
 </div>
