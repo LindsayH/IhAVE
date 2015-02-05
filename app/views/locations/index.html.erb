@@ -15,7 +15,7 @@
           <% if current_user.locations %>
           <% else %>
               <h1>Lets get started</h1>
-              <p> click the blue + signe to creae a location</p>
+              <p> click the blue + sign to create a location</p>
           <% end %>
           <div class="search-results">
             <% if @results %>
@@ -38,11 +38,13 @@
       <div class="container-fluid ">
         <div class ="row image-tiles">
           <% @user_items.each do |item| %>
+             <%= render partial: 'items/item', locals: {item: item }%>
+         <!--   <% location = item.location_id %>
               <div class="col-xs-12 col-md-6 col-lg-3 display item-block">
                 <%= link_to (image_tag item.avatar.url(:medium), class: "img img-responsive img-center"), location_item_path(location_id: item.location_id,id: item.id), remote: true %>
                 <p>Tags: <%= raw item.tag_list.map { |t| link_to t, tag_path(t, item_id: item.id, location_id: item.location_id) }.join(', ') %></p>
               </div>
-
+ -->
           <%end%>
         </div>
       </div>
@@ -52,10 +54,12 @@
       <div class="container-fluid ">
         <div class ="row image-tiles">
           <% @cheked_out.each do |item| %>
+          <%= render partial: 'items/item', locals: {item: item} %>
+<!--               <% location = item.location_id %>
               <div class="col-xs-12 col-md-4 col-lg-3 display item-block">
                 <%= link_to (image_tag item.avatar.url(:medium), class: "img img-responsive img-center"), location_item_path(item.location_id, item), remote: true %>
                 <p>Tags: <%= raw item.tag_list.map { |t| link_to t, tag_path(t, item_id: item.id, location_id: item.location_id) }.join(', ') %></p>
-              </div>
+              </div> -->
           <%end%>
         </div>
       </div>
@@ -65,6 +69,12 @@
       <div class="container-fluid ">
         <div class ="row image-tiles">
           <% @overdue.each do |item| %>
+          <%= render partial: 'items/item', locals: {item: item} %>
+<!--               <% location = item.location_id %>
+              <div class="col-xs-12 col-md-4 col-lg-3 display item-block">
+                <%= link_to (image_tag item.avatar.url(:medium)), location_item_path(item.location_id, item), remote: true %>
+                <p>Tags: <%= raw item.tag_list.map { |t| link_to t, tag_path(t, item_id: item.id, location_id: item.location_id) }.join(', ') %></p> -->
+              <!-- </div> -->
               <div class="col-xs-12 col-md-4 col-lg-3 display item-block">
                 <%= link_to (image_tag item.avatar.url(:medium), class: "img img-responsive img-center"), location_item_path(item.location_id, item), remote: true %>
                 <p>Tags: <%= raw item.tag_list.map { |t| link_to t, tag_path(t, item_id: item.id, location_id: item.location_id) }.join(', ') %></p>

@@ -17,13 +17,11 @@
   <div class="container-fluid ">
     <div class ="row image-tiles">
       <% @items.each do |item| %>
-          <div class="col-xs-12 col-md-4 col-lg-3 display item-block">
-            <%= link_to (image_tag item.avatar.url(:medium), class: "img img-responsive img-center"), location_item_path(@location, item), remote: true %>
-            <p>Tags: <%= raw item.tag_list.map { |t| link_to t, tag_path(t, item_id: item.id, location_id: item.location_id) }.join(', ') %></p>
-          </div>
+          <%= render partial: 'item', locals: {item: item} %>
       <%end%>
-     <div class="col-xs-12 col-md-4 col-lg-3 display item-block">
-        <%= link_to '', new_location_item_path(@location,@item), class:"fa fa-plus fa-3x", remote: true %>
+      <div class="col-xs-12 col-md-4 col-lg-3 display item-block">
+        <%= link_to '', new_location_item_path(@location,@item), class:"fa fa-plus fa-5x", remote: true %>
+      </div>
     </div>
   </div>
 

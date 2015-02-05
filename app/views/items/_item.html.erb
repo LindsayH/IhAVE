@@ -1,0 +1,5 @@
+<div class="col-xs-12 col-md-4 col-lg-3 display item-block">
+	<h3><%= item.name %></h3>
+  <%= link_to (image_tag item.avatar.url(:medium)), location_item_path(item.location_id, item.id), remote: true %>
+  <p>Tags: <%= raw item.tag_list.map { |t| link_to t, tag_path(t, item_id: item.id, location_id: item.location.id) }.join(', ') %></p>
+</div>
